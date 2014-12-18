@@ -146,7 +146,7 @@ public class TwitterApp {
                     PrintWriter out
                             = new PrintWriter(socket.getOutputStream(), true);
                     out.println(tweet);
-                    System.out.println("Tweet sended: "+tweet);
+                    System.out.println("Tweet sended: ");
                 }
             }
 

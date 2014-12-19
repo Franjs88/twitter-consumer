@@ -71,13 +71,12 @@ public class TwitterApp {
         if (executionMode == 1) {
             System.out.println("Execution mode = From file " + executionMode);
             File file = new File(TwitterApp.path);
-            //Create a reader to read file stream
-            BufferedReader fileReader = new BufferedReader(new FileReader(file));
-
-            while (line == null || line.length() <= 0) {
-                line = fileReader.readLine();
+            try ( //Create a reader to read file stream
+                    BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
+                while (line == null || line.length() <= 0) {
+                    line = fileReader.readLine();
+                }
             }
-            fileReader.close();
         } else if (executionMode == 2) {
             System.out.println("Execution mode = from twitter " + executionMode);
 
@@ -146,7 +145,7 @@ public class TwitterApp {
                     PrintWriter out
                             = new PrintWriter(socket.getOutputStream(), true);
                     out.println(tweet);
-                    System.out.println("Tweet sended: ");
+                    System.out.println("Tweet sended: "+tweet);
                 }
             }
 
